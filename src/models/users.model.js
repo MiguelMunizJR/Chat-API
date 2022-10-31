@@ -1,25 +1,24 @@
-//? Dependencies
 const db = require("../utils/database");
-const DataTypes = require("sequelize").DataTypes;
+const datatypes = require("sequelize").DataTypes;
 
-const Users = db.define("users", {
+const users = db.define("users", {
   id: {
     primaryKey: true,
-    type: DataTypes.UUID,
+    type: datatypes.UUID,
     allowNull: false,
   },
   firstName: {
-    type: DataTypes.STRING,
+    type: datatypes.STRING,
     allowNull: false,
     field: "first_name",
   },
   lastName: {
-    type: DataTypes.STRING,
+    type: datatypes.STRING,
     allowNull: false,
     field: "last_name",
   },
   email: {
-    type: DataTypes.STRING,
+    type: datatypes.STRING,
     allowNull: false,
     unique: true,
     validate: {
@@ -27,40 +26,16 @@ const Users = db.define("users", {
     },
   },
   password: {
-    type: DataTypes.STRING,
+    type: datatypes.STRING,
     allowNull: false,
+  },
+  profileImage: {
+    type: datatypes.STRING,
+    field: "profile_image",
   },
   phone: {
-    type: DataTypes.STRING, //? +52
-    allowNull: false,
-    unique: true,
-  },
-  birthday: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
-  },
-  gender: {
-    type: DataTypes.STRING,
-  },
-  role: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: "normal",
-  },
-  country: {
-    type: DataTypes.STRING,
-  },
-  status: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: "active",
-  },
-  isVerified: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-    field: "is_verified",
+    type: datatypes.STRING(16),
   },
 });
 
-module.exports = Users;
+module.exports = users;
