@@ -4,25 +4,29 @@ const Participants = require("./participants.model");
 const Users = require("./Users.model");
 
 const initModels = () => {
-  //! Users
-  //? Un usuario tiene muchas conversaciones
-  Users.hasMany(Conversation);
-  //? Un usuario envia muchos mensajes
-  Users.hasMany(Message);
-
-  //! Messages
-  //? Un mensaje pertenece a un usuario
-  Message.belongsTo(Users);
-
-  //! Participants
-  //? Un participante tiene un solo usuario
+  //TODO 1:M:1
+  //* 1:M
+  Users.hasMany(Participants);
   Participants.belongsTo(Users);
 
-  //! Conversations
-  //? Una conversacion tiene muchos mensajes
-  Conversation.hasMany(Message);
-  //? Una conversacion tiene muchos participantes
+  //* 1:M
   Conversation.hasMany(Participants);
+  Participants.belongsTo(Conversation);
+  // TODO // TODO // TODO //
+
+  //* 1:M
+  Users.hasMany(Conversation);
+  Conversation.belongsTo(Users);
+
+  //TODO 1:M:1
+  //* 1:M
+  Users.hasMany(Message);
+  Message.belongsTo(Users);
+
+  //* 1:M
+  Conversation.hasMany(Message);
+  Message.belongsTo(Conversation);
+  // TODO // TODO // TODO //
 };
 
 module.exports = initModels;

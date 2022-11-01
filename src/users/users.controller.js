@@ -28,10 +28,8 @@ const createUser = async (data) => {
     lastName: data.lastName,
     email: data.email,
     password: hashPass(data.password),
+    profileImage: data.profileImage,
     phone: data.phone,
-    birthday: data.birthday,
-    gender: data.gender,
-    country: data.country,
   });
   return newUser;
 };
@@ -60,7 +58,6 @@ const getUserByEmail = async (email) => {
   const data = await Users.findOne({
     where: {
       email,
-      status: "is_active",
     },
   });
   return data;
