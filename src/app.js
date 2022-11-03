@@ -2,6 +2,7 @@ const express = require("express");
 const initModels = require("./models/initModel");
 const db = require("./utils/database");
 const conversationsRouter = require("./conversations/conversations.router");
+const messagesRouter = require("./messages/messages.router");
 const port = require("./config").port;
 
 //* Inicializar proyecto
@@ -12,6 +13,7 @@ app.use(express.json());
 
 //* Rutas
 app.use("/api/v1/conversations", conversationsRouter);
+app.use("/api/v1/conversations/messages", messagesRouter);
 
 //* Init models
 initModels();
