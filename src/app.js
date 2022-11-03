@@ -1,14 +1,17 @@
 const express = require("express");
 const initModels = require("./models/initModel");
 const db = require("./utils/database");
+const conversationsRouter = require("./conversations/conversations.router");
 const port = require("./config").port;
 
+//* Inicializar proyecto
 const app = express();
 
 //* Habilitar JSON
 app.use(express.json());
 
 //* Rutas
+app.use("/api/v1/conversations", conversationsRouter);
 
 //* Init models
 initModels();
@@ -22,7 +25,7 @@ db.authenticate()
     console.log(err);
   });
 
-db.sync()
+db.sync({ alter: true })
   .then(() => {
     console.log("Database Synced!");
   })

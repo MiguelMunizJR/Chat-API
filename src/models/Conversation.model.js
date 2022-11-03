@@ -14,6 +14,7 @@ const conversation = db.define("conversations", {
   },
   imageUrl: {
     type: datatypes.STRING,
+    field: "image_url",
   },
   createdBy: {
     type: datatypes.UUID,
@@ -21,6 +22,7 @@ const conversation = db.define("conversations", {
       key: "id",
       model: users,
     },
+    field: "created_by",
   },
 });
 
