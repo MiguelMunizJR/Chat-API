@@ -16,13 +16,13 @@ const getMessageById = async (id) => {
 };
 
 const createMessage = async (data) => {
-  const data = await Messages.create({
-    id: uuid.v4,
+  const newMessage = await Messages.create({
+    id: uuid.v4(),
     senderId: data.userId,
     conversationId: data.conversationId,
     message: data.message,
   });
-  return data;
+  return newMessage;
 };
 
 const deleteMessage = async (id) => {

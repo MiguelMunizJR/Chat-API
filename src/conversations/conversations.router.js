@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const conversationsServices = require("./conversations.service");
+const conversationsServices = require("./conversations.services");
 const passport = require("passport");
 require("../middlewares/auth.middleware")(passport);
 

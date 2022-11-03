@@ -3,7 +3,7 @@ const Conversation = require("./Conversation.model");
 const Users = require("./Users.model");
 const datatypes = require("sequelize").DataTypes;
 
-const participants = db.define("participants", {
+const Participants = db.define("participants", {
   id: {
     primaryKey: true,
     type: datatypes.UUID,
@@ -15,6 +15,7 @@ const participants = db.define("participants", {
       key: "id",
       model: Conversation,
     },
+    field: "conversation_id"
   },
   userId: {
     type: datatypes.UUID,
@@ -22,7 +23,8 @@ const participants = db.define("participants", {
       key: "id",
       model: Users,
     },
+    field: "user_id"
   },
 });
 
-module.exports = participants;
+module.exports = Participants;

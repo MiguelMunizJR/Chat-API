@@ -1,8 +1,8 @@
 const db = require("../utils/database");
-const users = require("./Users.model");
+const Users = require("./Users.model");
 const datatypes = require("sequelize").DataTypes;
 
-const conversation = db.define("conversations", {
+const Conversation = db.define("conversations", {
   id: {
     primaryKey: true,
     type: datatypes.UUID,
@@ -18,12 +18,12 @@ const conversation = db.define("conversations", {
   },
   createdBy: {
     type: datatypes.UUID,
-    references: {
-      key: "id",
-      model: users,
-    },
     field: "created_by",
+    // references: {
+    //   key: "id",
+    //   model: Users,
+    // },
   },
 });
 
-module.exports = conversation;
+module.exports = Conversation;

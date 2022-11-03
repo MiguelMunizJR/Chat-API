@@ -1,9 +1,9 @@
 const db = require("../utils/database");
-const conversation = require("./Conversation.model");
-const users = require("./Users.model");
+const Conversation = require("./Conversation.model");
+const Users = require("./Users.model");
 const datatypes = require("sequelize").DataTypes;
 
-const message = db.define("messages", {
+const Messages = db.define("messages", {
   id: {
     primaryKey: true,
     type: datatypes.UUID,
@@ -13,7 +13,7 @@ const message = db.define("messages", {
     type: datatypes.UUID,
     references: {
       key: "id",
-      model: users,
+      model: Users,
     },
     field: "sender_id",
   },
@@ -21,7 +21,7 @@ const message = db.define("messages", {
     type: datatypes.UUID,
     references: {
       key: "id",
-      model: conversation,
+      model: Conversation,
     },
     field: "conversation_id",
   },
@@ -30,4 +30,4 @@ const message = db.define("messages", {
   },
 });
 
-module.exports = message;
+module.exports = Messages;

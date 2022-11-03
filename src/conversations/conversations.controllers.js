@@ -17,7 +17,7 @@ const getConversationById = async (id) => {
 
 const createConversation = async (data) => {
   const newConversation = await Conversations.create({
-    id: uuid.v4,
+    id: uuid.v4(),
     title: data.title,
     imageUrl: data.imageUrl,
     createdBy: data.userId,
@@ -48,5 +48,5 @@ module.exports = {
   getConversationById,
   createConversation,
   updateConversation,
-  deleteConversation
+  deleteConversation,
 };

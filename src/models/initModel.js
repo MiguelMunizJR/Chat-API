@@ -15,10 +15,10 @@ const initModels = () => {
   // TODO // TODO // TODO //
 
   //* 1:M
-  Users.hasMany(Conversation);
-  Conversation.belongsTo(Users);
+  // Users.hasMany(Conversation);
+  // Conversation.belongsTo(Users);
 
-  //TODO 1:M:1
+  // TODO 1:M:1
   //* 1:M
   Users.hasMany(Message);
   Message.belongsTo(Users);
