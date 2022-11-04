@@ -12,17 +12,17 @@ const Conversation = db.define("conversations", {
     type: datatypes.STRING(30),
     allowNull: false,
   },
-  imageUrl: {
+  imgUrl: {
     type: datatypes.STRING,
-    field: "image_url",
+    field: "img_url",
   },
   createdBy: {
     type: datatypes.UUID,
     field: "created_by",
     references: {
       key: "id",
-      model: Users
-    }
+      model: Users,
+    },
   },
 });
 

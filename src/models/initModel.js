@@ -14,9 +14,6 @@ const initModels = () => {
   Participants.belongsTo(Conversation);
   // TODO // TODO // TODO //
 
-  Conversation.hasMany(Users);
-  Users.belongsTo(Conversation);
-
   // TODO 1:M:1
   //* 1:M
   Users.hasMany(Message);

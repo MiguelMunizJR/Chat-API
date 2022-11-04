@@ -36,13 +36,13 @@ const getConversationById = (req, res) => {
 
 const createConversation = (req, res) => {
   const userId = req.user.id;
-  const { title, imageUrl } = req.body;
+  const { title, imgUrl } = req.body;
 
   if (title) {
     conversationsControllers
       .createConversation({
         title,
-        imageUrl,
+        imgUrl,
         userId,
       })
       .then((response) => {
@@ -58,7 +58,7 @@ const createConversation = (req, res) => {
       message: "Missing Data",
       fields: {
         title: "string",
-        imageUrl: "URL",
+        imgUrl: "URL",
       },
     });
   }
@@ -66,12 +66,12 @@ const createConversation = (req, res) => {
 
 const patchConversation = (req, res) => {
   const id = req.params.id;
-  const { title, imageUrl } = req.body;
+  const { title, imgUrl } = req.body;
 
   conversationsControllers
     .updateConversation(id, {
       title,
-      imageUrl,
+      imgUrl,
     })
     .then((response) => {
       if (response[0]) {

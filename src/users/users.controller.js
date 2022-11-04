@@ -5,7 +5,12 @@ const Users = require("../models/users.model");
 const hashPass = require("../utils/crypto").hashPass;
 
 const getAllUsers = async () => {
-  const data = await Users.findAll();
+  const data = await Users.findAll({
+    include: {
+      model: Conversation,
+      as: "conversations",
+    },
+  });
   return data;
 };
 

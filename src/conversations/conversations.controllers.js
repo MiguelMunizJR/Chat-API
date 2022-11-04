@@ -5,18 +5,21 @@ const Participants = require("../models/participants.model");
 
 const getAllConversations = async () => {
   const data = await Conversations.findAll({
+    attributes: {
+      exclude: ["createdAt", "updatedAt"],
+    },
     include: [
       {
         model: Messages,
         as: "messages",
-        attributes: ["id", "message", "sender_id"]
+        attributes: ["id", "message"],
       },
       {
         model: Participants,
         as: "participants",
-        attributes: ["id", "user_id"]
-      }
-    ]
+        attributes: ["id", "user_id"],
+      },
+    ],
   });
   return data;
 };
@@ -34,7 +37,7 @@ const createConversation = async (data) => {
   const newConversation = await Conversations.create({
     id: uuid.v4(),
     title: data.title,
-    imageUrl: data.imageUrl,
+    imgUrl: data.imgUrl,
     createdBy: data.userId,
   });
   return newConversation;
