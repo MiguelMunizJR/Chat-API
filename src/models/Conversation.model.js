@@ -19,10 +19,10 @@ const Conversation = db.define("conversations", {
   createdBy: {
     type: datatypes.UUID,
     field: "created_by",
-    // references: {
-    //   key: "id",
-    //   model: Users,
-    // },
+    references: {
+      key: "id",
+      model: Users
+    }
   },
 });
 

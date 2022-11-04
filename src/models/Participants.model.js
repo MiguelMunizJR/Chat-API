@@ -19,11 +19,11 @@ const Participants = db.define("participants", {
   },
   userId: {
     type: datatypes.UUID,
+    field: "user_id",
     references: {
       key: "id",
       model: Users,
     },
-    field: "user_id"
   },
 });
 

@@ -36,13 +36,14 @@ const getMessageById = (req, res) => {
 
 const createMessage = (req, res) => {
   const userId = req.user.id;
-  const { message, conversationId } = req.body;
+  const id = req.params.id;
+  const { message } = req.body;
 
-  if (message && conversationId) {
+  if (message) {
     messagesControllers
       .createMessage({
         message,
-        conversationId,
+        id,
         userId,
       })
       .then((response) => {
@@ -57,8 +58,7 @@ const createMessage = (req, res) => {
     res.status(400).json({
       message: "Missing Data",
       fields: {
-        message: "string",
-        conversationId: "UUID",
+        message: "string"
       },
     });
   }

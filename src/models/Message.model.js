@@ -11,19 +11,19 @@ const Messages = db.define("messages", {
   },
   senderId: {
     type: datatypes.UUID,
+    field: "sender_id",
     references: {
       key: "id",
       model: Users,
     },
-    field: "sender_id",
   },
   conversationId: {
     type: datatypes.UUID,
+    field: "conversation_id",
     references: {
       key: "id",
       model: Conversation,
     },
-    field: "conversation_id",
   },
   message: {
     type: datatypes.STRING,

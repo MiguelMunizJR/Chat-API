@@ -1,5 +1,6 @@
 //? Dependencies
 const uuid = require("uuid");
+const Conversation = require("../models/Conversation.model");
 const Users = require("../models/users.model");
 const hashPass = require("../utils/crypto").hashPass;
 

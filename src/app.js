@@ -5,7 +5,6 @@ const cors = require("cors");
 const usersRouter = require("./users/users.router");
 const authRouter = require("./auth/auth.router");
 const conversationsRouter = require("./conversations/conversations.router");
-const messagesRouter = require("./messages/messages.router");
 const port = require("./config").port;
 
 //* Inicializar proyecto
@@ -19,7 +18,6 @@ app.use(cors());
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/conversations", conversationsRouter);
-app.use("/api/v1/conversations/messages", messagesRouter);
 
 //* Init models
 initModels();
@@ -33,7 +31,7 @@ db.authenticate()
     console.log(err);
   });
 
-db.sync({force:true})
+db.sync()
   .then(() => {
     console.log("Database Synced!");
   })

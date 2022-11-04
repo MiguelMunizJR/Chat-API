@@ -1,8 +1,23 @@
 const Conversations = require("../models/Conversation.model");
 const uuid = require("uuid");
+const Messages = require("../models/message.model");
+const Participants = require("../models/participants.model");
 
 const getAllConversations = async () => {
-  const data = await Conversations.findAll();
+  const data = await Conversations.findAll({
+    include: [
+      {
+        model: Messages,
+        as: "messages",
+        attributes: ["id", "message", "sender_id"]
+      },
+      {
+        model: Participants,
+        as: "participants",
+        attributes: ["id", "user_id"]
+      }
+    ]
+  });
   return data;
 };
 
